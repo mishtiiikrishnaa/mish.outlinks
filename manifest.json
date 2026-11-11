@@ -1,0 +1,10 @@
+{
+  "id": "mish-outlinks",
+  "name": "mish.outlinks",
+  "version": "1.0.0",
+  "minAppVersion": "1.15.0",
+  "description": "A forward-links (outgoing links) pane styled like a terminal: starship prompt, eza-style tree, tiny command line, and an unlinked-mentions tab.",
+  "author": "mishti",
+  "authorUrl": "https://github.com/mishtiiikrishnaa",
+  "isDesktopOnly": true
+}
