@@ -111,13 +111,13 @@ body.theme-light {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   mish.backlinks · panel styles
-   colours come from the theme, with fallbacks. the class prefix is bl-,
+   mish.outlinks · panel styles
+   colours come from the theme, with fallbacks. the class prefix is ol-,
    so this never clashes with mish.eza, mish.fastfetch or the other links pane.
    ═══════════════════════════════════════════════════════════════════════ */
 
 /* the view's content area doesn't scroll itself: the card inside it does */
-.bl-host {
+.ol-host {
   background: transparent !important;
   position: relative;
   display: flex;
@@ -125,26 +125,26 @@ body.theme-light {
   overflow: hidden !important;
 }
 
-.bl-root {
+.ol-root {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
   height: 100%;
   display: flex;
-  padding: var(--bl-pad, 10px);          /* settings: outer margin */
+  padding: var(--ol-pad, 10px);          /* settings: outer margin */
 }
 
-.bl-card,
-.bl-card * { box-sizing: border-box; }
+.ol-card,
+.ol-card * { box-sizing: border-box; }
 
-.bl-card [hidden] { display: none !important; }
+.ol-card [hidden] { display: none !important; }
 
-.bl-card {
+.ol-card {
   font-family: var(--vf-mono, "mish mono", ui-monospace, monospace), "mish icons", "Symbols Nerd Font Mono";
   background: transparent;           /* whatever the theme's sidebar is shows through */
   color: var(--vf-fg, var(--mz-fg));
   border: 0;                         /* the rainbow ring below is the border */
-  border-radius: var(--bl-radius, 10px);
+  border-radius: var(--ol-radius, 10px);
   font-size: 12.5px;
   line-height: 1.5;
   letter-spacing: 0.005em;
@@ -156,26 +156,26 @@ body.theme-light {
   max-width: 100%;
   max-height: 100%;
   flex: 0 0 auto;
-  margin: var(--bl-mt, auto) auto auto var(--bl-ml, auto);
+  margin: var(--ol-mt, auto) auto auto var(--ol-ml, auto);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.bl-card.is-full { width: 100%; }
+.ol-card.is-full { width: 100%; }
 
 /* thin rainbow border: a 1px gradient ring cut out with a mask, so the card
    itself stays see-through. same colours as the rainbow scrollbar. */
-.bl-card::before {
+.ol-card::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 6;
-  padding: var(--bl-ring-w, 1px);
+  padding: var(--ol-ring-w, 1px);
   border-radius: inherit;
-  background: var(--bl-ring-bg, linear-gradient(
-    var(--bl-angle, 135deg),
+  background: var(--ol-ring-bg, linear-gradient(
+    var(--ol-angle, 135deg),
     var(--vf-pink-hi, var(--mz-f-pink-hi)),
     var(--vf-peach, var(--mz-f-peach)),
     var(--vf-yellow, var(--mz-f-yellow)),
@@ -191,34 +191,34 @@ body.theme-light {
 }
 
 /* the scrolling part: prompt, command, list. its natural width is the prompt's. */
-.bl-scroll,
-.bl-helppage {
+.ol-scroll,
+.ol-helppage {
   flex: 1 1 auto;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: none !important;
 }
-.bl-scroll::-webkit-scrollbar,
-.bl-helppage::-webkit-scrollbar {
+.ol-scroll::-webkit-scrollbar,
+.ol-helppage::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
 }
-.bl-scroll { padding: 12px 12px 6px; }
-.bl-helppage { padding: 10px 12px 6px; display: none; }
+.ol-scroll { padding: 12px 12px 6px; }
+.ol-helppage { padding: 10px 12px 6px; display: none; }
 
-.bl-root.is-help .bl-scroll { display: none; }
-.bl-root.is-help .bl-helppage { display: block; }
+.ol-root.is-help .ol-scroll { display: none; }
+.ol-root.is-help .ol-helppage { display: block; }
 
 /* everything but the prompt ignores its own content when the card works out
    its width, so resizing the sidebar never stretches the card around a long name */
-.bl-scroll > :not(.bl-bar),
-.bl-helppage,
-.bl-foot { contain: inline-size; }
+.ol-scroll > :not(.ol-bar),
+.ol-helppage,
+.ol-foot { contain: inline-size; }
 
 /* — powerline starship prompt — */
-.bl-bar {
+.ol-bar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -229,7 +229,7 @@ body.theme-light {
   margin: 0 0 8px;
 }
 
-.bl-seg {
+.ol-seg {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -245,111 +245,111 @@ body.theme-light {
 }
 
 /* each segment tucks under the previous arrow tip */
-.bl-seg + .bl-seg {
+.ol-seg + .ol-seg {
   margin-left: -9px;
   padding-left: 18px;
 }
 
-.bl-seg:first-child {
+.ol-seg:first-child {
   border-radius: 11px 0 0 11px;
   padding-left: 11px;
 }
 
-.bl-seg:last-child {
+.ol-seg:last-child {
   clip-path: none;
   border-radius: 0 11px 11px 0;
   padding-right: 12px;
 }
 
 /* a pill on its own */
-.bl-seg:first-child:last-child {
+.ol-seg:first-child:last-child {
   border-radius: 11px;
   padding-left: 11px;
 }
 
-.bl-user  { background: var(--vf-pink-hi, var(--mz-f-pink-hi)); }
-.bl-path  {
+.ol-user  { background: var(--vf-pink-hi, var(--mz-f-pink-hi)); }
+.ol-path  {
   display: block;
   flex: 0 0 auto;              /* the full vault name always shows; main.js scales the bar to fit */
   background: var(--vf-peach, var(--mz-f-peach));
 }
 /* only below half size does the name start to ellipsise */
-.bl-bar.is-squeezed .bl-path {
+.ol-bar.is-squeezed .ol-path {
   flex: 0 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.bl-count { background: var(--vf-lilac, var(--mz-f-lilac)); }
+.ol-count { background: var(--vf-lilac, var(--mz-f-lilac)); }
 
 /* the little ">>>" chevrons between path and clock */
-.bl-seg.bl-ch  { width: 18px; padding: 0; }
-.bl-ch1 { background: var(--vf-yellow, var(--mz-f-yellow)); }
-.bl-ch2 { background: var(--vf-green, var(--mz-f-green)); }
-.bl-ch3 { background: var(--vf-blue, var(--mz-f-blue)); }
+.ol-seg.ol-ch  { width: 18px; padding: 0; }
+.ol-ch1 { background: var(--vf-yellow, var(--mz-f-yellow)); }
+.ol-ch2 { background: var(--vf-green, var(--mz-f-green)); }
+.ol-ch3 { background: var(--vf-blue, var(--mz-f-blue)); }
 
 /* pill shapes (settings): arrow is the default above. round and flat drop the arrow
    tips and the little >>> bridge, and put a gap between the pills instead. */
-.bl-shape-round .bl-seg,
-.bl-shape-round .bl-seg:first-child,
-.bl-shape-round .bl-seg:last-child,
-.bl-shape-round .bl-seg:first-child:last-child,
-.bl-shape-flat .bl-seg,
-.bl-shape-flat .bl-seg:first-child,
-.bl-shape-flat .bl-seg:last-child,
-.bl-shape-flat .bl-seg:first-child:last-child {
+.ol-shape-round .ol-seg,
+.ol-shape-round .ol-seg:first-child,
+.ol-shape-round .ol-seg:last-child,
+.ol-shape-round .ol-seg:first-child:last-child,
+.ol-shape-flat .ol-seg,
+.ol-shape-flat .ol-seg:first-child,
+.ol-shape-flat .ol-seg:last-child,
+.ol-shape-flat .ol-seg:first-child:last-child {
   clip-path: none;
   padding: 0 11px;
   margin-left: 0;
 }
-.bl-shape-round .bl-seg,
-.bl-shape-round .bl-seg:first-child,
-.bl-shape-round .bl-seg:last-child,
-.bl-shape-round .bl-seg:first-child:last-child { border-radius: 11px; }
-.bl-shape-flat .bl-seg,
-.bl-shape-flat .bl-seg:first-child,
-.bl-shape-flat .bl-seg:last-child,
-.bl-shape-flat .bl-seg:first-child:last-child { border-radius: 0; }
-.bl-shape-round .bl-seg + .bl-seg { margin-left: 4px; }
-.bl-shape-round .bl-ch,
-.bl-shape-flat .bl-ch { display: none; }
+.ol-shape-round .ol-seg,
+.ol-shape-round .ol-seg:first-child,
+.ol-shape-round .ol-seg:last-child,
+.ol-shape-round .ol-seg:first-child:last-child { border-radius: 11px; }
+.ol-shape-flat .ol-seg,
+.ol-shape-flat .ol-seg:first-child,
+.ol-shape-flat .ol-seg:last-child,
+.ol-shape-flat .ol-seg:first-child:last-child { border-radius: 0; }
+.ol-shape-round .ol-seg + .ol-seg { margin-left: 4px; }
+.ol-shape-round .ol-ch,
+.ol-shape-flat .ol-ch { display: none; }
 
 
 
 /* — command lines — */
-.bl-cmd {
+.ol-cmd {
   margin: 6px 0 4px;
   font-size: 11.5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.bl-chev { color: var(--vf-green, var(--mz-green)); }
-.bl-exe  { color: var(--vf-green, var(--mz-green)); }
-.bl-str  { color: var(--vf-peach, var(--mz-peach)); }
-.bl-flag { color: var(--vf-lilac, var(--mz-lilac)); }
-.bl-pipe { color: var(--vf-dim, var(--mz-dim)); }
+.ol-chev { color: var(--vf-green, var(--mz-green)); }
+.ol-exe  { color: var(--vf-green, var(--mz-green)); }
+.ol-str  { color: var(--vf-peach, var(--mz-peach)); }
+.ol-flag { color: var(--vf-lilac, var(--mz-lilac)); }
+.ol-pipe { color: var(--vf-dim, var(--mz-dim)); }
 
-.bl-cursor {
+.ol-cursor {
   display: inline-block;
   width: 6px;
   height: 12px;
   margin-left: 4px;
   background: var(--vf-pink-hi, var(--mz-f-pink-hi));
   vertical-align: -1px;
-  animation: bl-blink 1.1s steps(1) infinite;
+  animation: ol-blink 1.1s steps(1) infinite;
 }
 
-@keyframes bl-blink {
+@keyframes ol-blink {
   0%, 49%   { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
 
 /* ═══ the tree ═══ */
 
-.bl-body { margin-top: 2px; }
+.ol-body { margin-top: 2px; }
 
-.bl-row {
+.ol-row {
   --c: var(--vf-pink-hi, var(--mz-pink-hi));
   --g: var(--mz-tree-line, color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 28%, transparent));
   position: relative;
@@ -361,30 +361,30 @@ body.theme-light {
   white-space: nowrap;
   cursor: pointer;
 }
-.bl-row.is-top { cursor: default; }
-.bl-row.is-snip {
+.ol-row.is-top { cursor: default; }
+.ol-row.is-snip {
   min-height: 20px;
   font-size: 11px;
   line-height: 20px;
 }
 
 /* the row colours cycle through the rainbow, the way eza colours by depth */
-.bl-c0 { --c: var(--vf-pink-hi, var(--mz-pink-hi)); }
-.bl-c1 { --c: var(--vf-peach, var(--mz-peach)); }
-.bl-c2 { --c: var(--vf-yellow, var(--mz-yellow)); }
-.bl-c3 { --c: var(--vf-green, var(--mz-green)); }
-.bl-c4 { --c: var(--vf-blue, var(--mz-blue)); }
-.bl-c5 { --c: var(--vf-lilac, var(--mz-lilac)); }
+.ol-c0 { --c: var(--vf-pink-hi, var(--mz-pink-hi)); }
+.ol-c1 { --c: var(--vf-peach, var(--mz-peach)); }
+.ol-c2 { --c: var(--vf-yellow, var(--mz-yellow)); }
+.ol-c3 { --c: var(--vf-green, var(--mz-green)); }
+.ol-c4 { --c: var(--vf-blue, var(--mz-blue)); }
+.ol-c5 { --c: var(--vf-lilac, var(--mz-lilac)); }
 
 /* ├── └── │ drawn with borders, so they join up from row to row */
-.bl-cell {
+.ol-cell {
   position: relative;
   flex: 0 0 3ch;
   width: 3ch;
 }
-.bl-v::before,
-.bl-t::before,
-.bl-l::before {
+.ol-v::before,
+.ol-t::before,
+.ol-l::before {
   content: "";
   position: absolute;
   left: 1ch;
@@ -392,9 +392,9 @@ body.theme-light {
   bottom: 0;
   border-left: 1px solid var(--g);
 }
-.bl-l::before { bottom: 50%; }
-.bl-t::after,
-.bl-l::after {
+.ol-l::before { bottom: 50%; }
+.ol-t::after,
+.ol-l::after {
   content: "";
   position: absolute;
   left: 1ch;
@@ -403,21 +403,21 @@ body.theme-light {
   border-top: 1px solid var(--g);
 }
 
-.bl-name {
+.ol-name {
   flex: 0 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--c);
 }
-.bl-dir { font-weight: 700; color: var(--vf-pink-hi, var(--mz-pink-hi)); }
-.bl-row:not(.is-top):not(.is-snip):hover .bl-name {
+.ol-dir { font-weight: 700; color: var(--vf-pink-hi, var(--mz-pink-hi)); }
+.ol-row:not(.is-top):not(.is-snip):hover .ol-name {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 /* a link to a note that doesn't exist yet */
-.bl-name.is-broken {
+.ol-name.is-broken {
   color: var(--vf-pink, var(--mz-pink));
   text-decoration: underline wavy;
   text-decoration-thickness: 1px;
@@ -425,7 +425,7 @@ body.theme-light {
   text-decoration-color: color-mix(in srgb, var(--vf-pink, var(--mz-pink)) 60%, transparent);
 }
 
-.bl-meta {
+.ol-meta {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -435,12 +435,12 @@ body.theme-light {
   font-size: 11px;
   color: var(--vf-dim, var(--mz-dim));
 }
-.bl-dim { color: var(--vf-dim, var(--mz-dim)); }
-.bl-n   { color: var(--vf-yellow, var(--mz-yellow)); }
-.bl-q   { color: var(--vf-pink, var(--mz-pink)); font-weight: 700; }
-.bl-ln  { color: var(--vf-blue, var(--mz-blue)); }
-.bl-ln:hover { text-decoration: underline; text-underline-offset: 3px; }
-.bl-tag {
+.ol-dim { color: var(--vf-dim, var(--mz-dim)); }
+.ol-n   { color: var(--vf-yellow, var(--mz-yellow)); }
+.ol-q   { color: var(--vf-pink, var(--mz-pink)); font-weight: 700; }
+.ol-ln  { color: var(--vf-blue, var(--mz-blue)); }
+.ol-ln:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ol-tag {
   padding: 0 6px;
   font-size: 10px;
   line-height: 14px;
@@ -450,13 +450,13 @@ body.theme-light {
 }
 
 /* the lines of context under a note */
-.bl-sl {
+.ol-sl {
   flex: 0 0 auto;
   margin-right: 1ch;
   color: var(--vf-blue, var(--mz-blue));
   opacity: 0.85;
 }
-.bl-st {
+.ol-st {
   flex: 0 1 auto;
   min-width: 0;
   overflow: hidden;
@@ -464,16 +464,19 @@ body.theme-light {
   padding-right: 8px;
   color: color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 68%, transparent);
 }
-.bl-hl-m {
+/* the match inside a line, the way grep --color shows it: bold coloured text on the plain
+   line. no box, no background. */
+.ol-hl-m {
   color: var(--vf-peach, var(--mz-peach));
-  background: color-mix(in srgb, var(--vf-peach, var(--mz-f-peach)) 18%, transparent);
-  border-radius: 3px;
+  font-weight: 700;
+  background: none;
+  border-radius: 0;
 }
-.bl-row.is-snip:hover { background: var(--mz-hover, color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 7%, transparent)); border-radius: 4px; }
-.bl-row.is-more .bl-st { color: var(--vf-dim, var(--mz-dim)); font-style: italic; }
+.ol-row.is-snip:hover { background: var(--mz-hover, color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 7%, transparent)); border-radius: 4px; }
+.ol-row.is-more .ol-st { color: var(--vf-dim, var(--mz-dim)); font-style: italic; }
 
 /* "link": turns an unlinked mention into a link */
-.bl-act {
+.ol-act {
   flex: 0 0 auto;
   align-self: center;
   margin-left: auto;
@@ -485,18 +488,18 @@ body.theme-light {
   color: var(--vf-black, var(--mz-ink));
   background: var(--vf-lilac, var(--mz-f-lilac));
 }
-.bl-act:hover { filter: brightness(1.12); }
-.bl-act:active { transform: translateY(1px); }
+.ol-act:hover { filter: brightness(1.12); }
+.ol-act:active { transform: translateY(1px); }
 
 /* ═══ empty states, the help page and notes ═══ */
 
-.bl-says {
+.ol-says {
   margin: 8px 0 4px;
   color: var(--vf-yellow, var(--mz-yellow));
   white-space: normal;
   overflow-wrap: anywhere;
 }
-.bl-p {
+.ol-p {
   margin: 4px 0;
   font-size: 11.5px;
   line-height: 1.6;
@@ -504,23 +507,23 @@ body.theme-light {
   overflow-wrap: anywhere;
   color: color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 80%, transparent);
 }
-.bl-p.is-dim { color: var(--vf-dim, var(--mz-dim)); }
-.bl-k { color: var(--vf-pink-hi, var(--mz-pink-hi)); }
+.ol-p.is-dim { color: var(--vf-dim, var(--mz-dim)); }
+.ol-k { color: var(--vf-pink-hi, var(--mz-pink-hi)); }
 
-.bl-note {
+.ol-note {
   margin: 6px 0;
   font-size: 11px;
   white-space: normal;
   color: var(--vf-dim, var(--mz-dim));
 }
-.bl-scan {
+.ol-scan {
   margin: 8px 0 4px;
   color: var(--vf-yellow, var(--mz-yellow));
   font-size: 11.5px;
 }
 
 /* a section heading with a rule either side, like mish.eza's help */
-.bl-sec {
+.ol-sec {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -528,14 +531,14 @@ body.theme-light {
   font-size: 11px;
   color: var(--vf-dim, var(--mz-dim));
 }
-.bl-sec::before,
-.bl-sec::after {
+.ol-sec::before,
+.ol-sec::after {
   content: "";
   flex: 1 1 0;
   border-top: 1px solid var(--vf-line, var(--mz-line));
 }
 
-.bl-grid {
+.ol-grid {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: 3px 14px;
@@ -543,29 +546,29 @@ body.theme-light {
   line-height: 1.55;
   white-space: normal;
 }
-.bl-grid > .bl-k { overflow-wrap: anywhere; }
-.bl-gd {
+.ol-grid > .ol-k { overflow-wrap: anywhere; }
+.ol-gd {
   overflow-wrap: anywhere;
   color: color-mix(in srgb, var(--vf-fg, var(--mz-fg)) 72%, transparent);
 }
 
-.bl-h-head {
+.ol-h-head {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
 }
-.bl-h-title {
+.ol-h-title {
   font-weight: 700;
   color: var(--vf-pink-hi, var(--mz-pink-hi));
 }
-.bl-h-close {
+.ol-h-close {
   justify-self: end;
   cursor: pointer;
   padding: 0 4px;
   color: var(--vf-dim, var(--mz-dim));
 }
-.bl-h-close:hover { color: var(--vf-pink-hi, var(--mz-pink-hi)); }
-.bl-h-note {
+.ol-h-close:hover { color: var(--vf-pink-hi, var(--mz-pink-hi)); }
+.ol-h-note {
   margin: 2px 0 2px;
   text-align: center;
   font-size: 11px;
@@ -574,11 +577,11 @@ body.theme-light {
 
 /* ═══ the footer: a one-line shell and the tabs ═══ */
 
-.bl-foot {
+.ol-foot {
   padding: 6px 12px 9px;
   border-top: 1px solid var(--vf-line, var(--mz-line));
 }
-.bl-out {
+.ol-out {
   margin-bottom: 4px;
   font-size: 11px;
   white-space: nowrap;
@@ -587,10 +590,10 @@ body.theme-light {
   cursor: pointer;
   color: var(--vf-green, var(--mz-green));
 }
-.bl-out:empty { display: none; }
-.bl-out.is-bad { color: var(--vf-pink, var(--mz-pink)); }
+.ol-out:empty { display: none; }
+.ol-out.is-bad { color: var(--vf-pink, var(--mz-pink)); }
 
-.bl-line {
+.ol-line {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -598,16 +601,16 @@ body.theme-light {
 }
 
 /* an invisible input, a coloured copy of its text behind it, and a block caret */
-.bl-inwrap {
+.ol-inwrap {
   position: relative;
   flex: 1 1 auto;
   min-width: 60px;
   height: 20px;
   overflow: hidden;
 }
-.bl-hl,
-.bl-hl-meas,
-.bl-input {
+.ol-hl,
+.ol-hl-meas,
+.ol-input {
   font: inherit;
   font-size: 12px;
   line-height: 20px;
@@ -617,35 +620,35 @@ body.theme-light {
   margin: 0;
   border: 0;
 }
-.bl-hl {
+.ol-hl {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
-.bl-hl-in { display: inline-block; }
-.bl-hl-meas {
+.ol-hl-in { display: inline-block; }
+.ol-hl-meas {
   position: absolute;
   left: 0;
   top: 0;
   visibility: hidden;
   pointer-events: none;
 }
-.bl-hl-cmd { color: var(--vf-green, var(--mz-green)); }
-.bl-hl-str { color: var(--vf-peach, var(--mz-peach)); }
-.bl-hl-key { color: var(--vf-blue, var(--mz-blue)); }
-.bl-hl-bad { color: var(--vf-pink, var(--mz-pink)); }
+.ol-hl-cmd { color: var(--vf-green, var(--mz-green)); }
+.ol-hl-str { color: var(--vf-peach, var(--mz-peach)); }
+.ol-hl-key { color: var(--vf-blue, var(--mz-blue)); }
+.ol-hl-bad { color: var(--vf-pink, var(--mz-pink)); }
 
 /* obsidian styles every input[type=text] (height, font-size, padding, caret...) with a
    higher specificity than a single class, which used to win: the real input came out
    taller and bigger than the coloured copy behind it (so the placeholder sat low and
    clipped), and its native caret showed up next to our block caret. so this is
    scoped under the card and every property that obsidian sets is forced. */
-.bl-card .bl-input,
-.bl-card .bl-input:hover,
-.bl-card .bl-input:focus,
-.bl-card .bl-input:focus-visible,
-.bl-card .bl-input:active {
+.ol-card .ol-input,
+.ol-card .ol-input:hover,
+.ol-card .ol-input:focus,
+.ol-card .ol-input:focus-visible,
+.ol-card .ol-input:active {
   position: absolute;
   inset: 0;
   display: block;
@@ -669,22 +672,22 @@ body.theme-light {
   color: transparent !important;
   caret-color: transparent !important;     /* the pink block is the only cursor */
 }
-.bl-card .bl-input::placeholder {
+.ol-card .ol-input::placeholder {
   color: var(--vf-dim, var(--mz-dim));
   font-size: 12px;
   line-height: 20px;
   opacity: 1;
 }
-.bl-input::selection {
+.ol-input::selection {
   background: color-mix(in srgb, var(--vf-pink-hi, var(--mz-f-pink-hi)) 35%, transparent);
   color: transparent;
 }
 
-.bl-hl { display: flex; align-items: center; }
+.ol-hl { display: flex; align-items: center; }
 
 /* the caret: the same pink block as mish.eza and mish.fastfetch (1ch x 12px, blinking),
    centred on the text. the letter under it is drawn inverted, like a terminal. */
-.bl-caret {
+.ol-caret {
   position: absolute;
   left: 0;
   top: 50%;
@@ -698,11 +701,11 @@ body.theme-light {
   pointer-events: none;
   color: var(--vf-black, var(--mz-ink));
   background: var(--vf-pink-hi, var(--mz-f-pink-hi));
-  animation: bl-blink 1.1s steps(1) infinite;
+  animation: ol-blink 1.1s steps(1) infinite;
 }
-.bl-inwrap.is-focus .bl-caret { display: block; }
+.ol-inwrap.is-focus .ol-caret { display: block; }
 /* not focused: a hollow block, like a terminal that isn't the active window */
-.bl-inwrap:not(.is-focus) .bl-caret {
+.ol-inwrap:not(.is-focus) .ol-caret {
   display: block;
   color: transparent;
   background: transparent;
@@ -711,56 +714,56 @@ body.theme-light {
   animation: none;
   opacity: 0.55;
 }
-.bl-inwrap.has-sel .bl-caret { display: none !important; }
+.ol-inwrap.has-sel .ol-caret { display: none !important; }
 /* empty prompt: nudge the placeholder right so the block doesn't sit on its first letter */
-.bl-inwrap.is-empty .bl-input { text-indent: 2ch; }
+.ol-inwrap.is-empty .ol-input { text-indent: 2ch; }
 
-.bl-tabs {
+.ol-tabs {
   display: flex;
   flex: 0 0 auto;
   gap: 14px;
   margin-left: auto;
   font-size: 11px;
 }
-.bl-tab {
+.ol-tab {
   cursor: pointer;
   white-space: nowrap;
   color: var(--vf-dim, var(--mz-dim));
 }
-.bl-tab:hover { color: var(--vf-blue, var(--mz-blue)); }
-.bl-tab.is-on {
+.ol-tab:hover { color: var(--vf-blue, var(--mz-blue)); }
+.ol-tab.is-on {
   color: var(--vf-pink-hi, var(--mz-pink-hi));
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.bl-tab-n { opacity: 0.75; }
+.ol-tab-n { opacity: 0.75; }
 
 /* ═══ rainbow gradient on our own icons ═══
-   the gradient (#mish-backlinks-rainbow) is injected by the plugin; the second value
+   the gradient (#mish-outlinks-rainbow) is injected by the plugin; the second value
    after url() is the fallback colour if it isn't there. */
 
-.mish-backlinks-ribbon svg,
-.workspace-tab-header[data-type="tv-backlinks-view"] .workspace-tab-header-inner-icon svg {
-  stroke: url(#mish-backlinks-rainbow) var(--vf-pink-hi, var(--mz-pink-hi, #ffa6c9)) !important;
+.mish-outlinks-ribbon svg,
+.workspace-tab-header[data-type="tv-outlinks-view"] .workspace-tab-header-inner-icon svg {
+  stroke: url(#mish-outlinks-rainbow) var(--vf-pink-hi, var(--mz-pink-hi, #ffa6c9)) !important;
 }
 
 /* dark mode glows a little on hover; light mode deepens instead, because
    brightening a dark-ish icon on a pale sidebar would wash it out */
-.mish-backlinks-ribbon:hover svg { filter: brightness(1.2); }
-body.theme-light .mish-backlinks-ribbon:hover svg { filter: brightness(0.88) saturate(1.1); }
+.mish-outlinks-ribbon:hover svg { filter: brightness(1.2); }
+body.theme-light .mish-outlinks-ribbon:hover svg { filter: brightness(0.88) saturate(1.1); }
 
 /* ═══ thin rainbow scrollbar ═══
-   the native scrollbar is hidden and main.js draws a 3px rainbow thumb (.bl-sb),
+   the native scrollbar is hidden and main.js draws a 3px rainbow thumb (.ol-sb),
    because themes / snippets keep overriding native scrollbars. */
 
-.bl-sb {
+.ol-sb {
   position: absolute;
   right: 0;
   width: 8px;
   z-index: 5;
   display: none;
 }
-.bl-sb-thumb {
+.ol-sb-thumb {
   position: absolute;
   top: 0;
   right: 2px;
